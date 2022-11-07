@@ -18,9 +18,8 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
     Context context;
     ArrayList<AttendanceModel> attendanceModels;
 
-    public AttendanceAdapter(Context context, ArrayList<AttendanceModel> attendanceModels) {
+    public AttendanceAdapter(Context context) {
         this.context = context;
-        this.attendanceModels = attendanceModels;
     }
 
     @NonNull
@@ -37,7 +36,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
 
     @Override
     public int getItemCount() {
-        return attendanceModels.size();
+        return 18;
     }
 
     public class AttendanceViewHolder extends RecyclerView.ViewHolder {
