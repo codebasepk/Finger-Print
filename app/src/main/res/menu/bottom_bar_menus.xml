@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/personsMenuId"
+        android:title="Persons"
+        android:icon="@drawable/ic_baseline_groups_3_24"/>
+
+    <item
+        android:id="@+id/todayAttendanceMenuId"
+        android:title="Attendance"
+        android:icon="@drawable/ic_baseline_fingerprint_24"/>
+
+    <item
+        android:id="@+id/attendanceRecordMenuId"
+        android:title="Record"
+        android:icon="@drawable/ic_baseline_dataset_24"/>
+</menu>

@@ -7,8 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import org.codebase.fingerprintattendancerecord.models.AttendanceModel;
+import org.codebase.fingerprintattendancerecord.models.RegisteredFPModel;
 
-@Database(entities = {AttendanceModel.class}, version = 1, exportSchema = false)
+@Database(entities = {AttendanceModel.class, RegisteredFPModel.class}, version = 5, exportSchema = false)
 public abstract class RecordDatabase extends RoomDatabase {
 
     private static volatile RecordDatabase INSTANCE;
@@ -16,12 +17,13 @@ public abstract class RecordDatabase extends RoomDatabase {
     public synchronized static RecordDatabase getInstance(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), RecordDatabase.class,
-                    "FPR_DB").fallbackToDestructiveMigration()
+                    "FPR_DB")
+                    .fallbackToDestructiveMigration()
                     .allowMainThreadQueries()
                     .build();
         }
         return INSTANCE;
     }
 
-    public abstract RecordDao posDao();
+    public abstract RecordDao fpDao();
 }
