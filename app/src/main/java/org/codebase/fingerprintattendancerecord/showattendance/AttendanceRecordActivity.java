@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import androidx.appcompat.widget.SearchView;
 
 import android.widget.DatePicker;
@@ -69,62 +70,74 @@ public class AttendanceRecordActivity extends AppCompatActivity {
         Date todayDate = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance();
         cal.setTime(todayDate);
-        cal.add(Calendar.DAY_OF_MONTH, -1);
+        cal.add(Calendar.MONTH, -1);
         Date date = cal.getTime();
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String todayString = formatter.format(date);
+        String monthAgoDate = formatter.format(date);
+        String todayString = formatter.format(todayDate);
 
-        recordBinding.endDateETId.setText(todayString);
+        Log.e("today ", todayString);
+//        recordBinding.startDateETId.setText(monthAgoDate);
+//        recordBinding.endDateETId.setText(todayString);
 
-        startDate = String.valueOf(recordBinding.startDateETId.getText());
+//        startDate = String.valueOf(recordBinding.startDateETId.getText());
 //        String startDate = "2022-11-20";
 
-        endDate = String.valueOf(recordBinding.endDateETId.getText());
+//        endDate = String.valueOf(recordBinding.endDateETId.getText());
 //        String endDate = "2022-11-21";
         Log.e("end date ", endDate);
 
+
         Intent intent = getIntent();
-        String getFpId = null;
+        String getFpId = "";
 
-        if (intent != null) {
-            Log.e("intent ", intent.toString());
-            getFpId = intent.getStringExtra("FP_ID");
-        }
+        assert intent != null;
+        getFpId = intent.getStringExtra("FP_ID");
 
-        if (getFpId != null) {
-            // get details of specific person on the base of FP_ID7
-            Log.e("intent fdpid ", intent.toString());
+//        recordDatabase.fpDao().sortDetailsByDate(startDate,
+//                endDate, getFpId).observe(this, attendanceAdapter::setData);
 
-            recordDatabase.fpDao().getUserDetail(getFpId).observe(
-                    this, attendanceAdapter::setData);
-            recordBinding.endDateETId.setText(null);
-        } else if (!endDate.isEmpty()){
-            recordDatabase.fpDao().toDayAttendance(endDate).observe(this,
-                    attendanceAdapter::setData);
-            Log.e("end ", endDate);
-        } else {
-            // get all persons data from DB
-            recordDatabase.fpDao().readAllData().observe(this,
-                    attendanceAdapter::setData);
-            recordBinding.endDateETId.setText(null);
-        }
+//        if (getFpId != null) {
+//            // get details of specific person on the base of FP_ID7
+//            Log.e("intent fdpid ", intent.toString());
+//
+        recordDatabase.fpDao().getUserDetail(getFpId).observe(
+                this, attendanceAdapter::setData);
+//            recordBinding.endDateETId.setText(null);
+//        } else if (!endDate.isEmpty()){
+//            recordDatabase.fpDao().toDayAttendance(endDate).observe(this,
+//                    attendanceAdapter::setData);
+//            Log.e("end ", endDate);
+//        } else {
+//            // get all persons data from DB
+//            recordDatabase.fpDao().readAllData().observe(this,
+//                    attendanceAdapter::setData);
+//            recordBinding.endDateETId.setText(null);
+//        }
+//
+//        recordBinding.startDateTILId.setStartIconOnClickListener(view -> {
+//            startDate = datePicker(recordBinding.startDateETId);
+//            Log.e("start ing date ", startDate);
+//            Objects.requireNonNull(recordBinding.startDateTILId.getEditText()).getText();
+////            recordBinding.detailsByDateButtonId.setEnabled(true);
+////            recordBinding.detailsByDateButtonId.setClickable(true);
+////            Log.e("start date + end date ", String.valueOf(recordBinding.startDateETId.getText())
+////                    + ",.,."+endDate);
+////            recordDatabase.fpDao().sortDetailsByDate(String.valueOf(recordBinding.startDateETId.getText()),
+////                    endDate).observe(this, attendanceAdapter::setData);
+//        });
 
-        recordBinding.startDateTILId.setStartIconOnClickListener(view -> {
-            datePicker(recordBinding.startDateETId);
-//            recordBinding.detailsByDateButtonId.setEnabled(true);
-//            recordBinding.detailsByDateButtonId.setClickable(true);
-//            Log.e("start date + end date ", String.valueOf(recordBinding.startDateETId.getText())
-//                    + ",.,."+endDate);
-//            recordDatabase.fpDao().sortDetailsByDate(String.valueOf(recordBinding.startDateETId.getText()),
-//                    endDate).observe(this, attendanceAdapter::setData);
-        });
+//        recordBinding.endDateTILId.setStartIconOnClickListener(view -> {
+//            endDate = datePicker(recordBinding.endDateETId);
+//        });
 
+//        String finalGetFpId = getFpId;
 //        recordBinding.detailsByDateButtonId.setOnClickListener(view -> {
 //            Log.e("start date + end date ", startDate
 //                    + ",.,."+endDate);
 //            if (!startDate.isEmpty() && !endDate.isEmpty()) {
-//                recordDatabase.fpDao().sortDetailsByDate(startDate, endDate).observe(this,
+//                recordDatabase.fpDao().sortDetailsByDate(startDate, endDate, finalGetFpId).observe(this,
 //                        attendanceAdapter::setData);
 //            }
 //        });
@@ -145,61 +158,57 @@ public class AttendanceRecordActivity extends AppCompatActivity {
 //            }
 //        });
 
-        recordBinding.endDateTILId.setStartIconOnClickListener(view -> {
-            datePicker(recordBinding.endDateETId);
-        });
-
         getRegisteredFPRecord();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//
+//        menuInflater.inflate(R.menu.search_menu, menu);
+//
+//        MenuItem searchItem = menu.findItem(R.id.actionSearchId);
+//
+//        SearchView searchView = (SearchView) searchItem.getActionView();
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String name) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String name) {
+//                filterList(name);
+//                return false;
+//            }
+//        });
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    private void filterList(String s) {
+//        Log.e("out filter ", s);
+//
+//        ArrayList<AttendanceModel> filteredList = new ArrayList<>();
+//
+//        for (AttendanceModel item: attendanceModel) {
+//            Log.e("out filter list ", item.getFpId());
+//
+//            if (item.getName().toLowerCase().contains(s.toLowerCase()) || item.getCurrentDate().contains(s)) {
+//                filteredList.add(item);
+//                Log.e("in filter list ", item.getFpId());
+//            }
+//        }
+//
+//        if (filteredList.isEmpty()) {
+//            Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show();
+//        } else {
+//            attendanceAdapter.filterList(filteredList);
+//        }
+//    }
 
-        menuInflater.inflate(R.menu.search_menu, menu);
-
-        MenuItem searchItem = menu.findItem(R.id.actionSearchId);
-
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String name) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String name) {
-                filterList(name);
-                return false;
-            }
-        });
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    private void filterList(String s) {
-        Log.e("out filter ", s);
-
-        ArrayList<AttendanceModel> filteredList = new ArrayList<>();
-
-        for (AttendanceModel item: attendanceModel) {
-            Log.e("out filter list ", item.getFpId());
-
-            if (item.getName().toLowerCase().contains(s.toLowerCase()) || item.getCurrentDate().contains(s)) {
-                filteredList.add(item);
-                Log.e("in filter list ", item.getFpId());
-            }
-        }
-
-        if (filteredList.isEmpty()) {
-            Toast.makeText(this, "No Data Found..", Toast.LENGTH_SHORT).show();
-        } else {
-            attendanceAdapter.filterList(filteredList);
-        }
-    }
-
-    public void datePicker(TextInputEditText textInputEditText) {
+    public String datePicker(TextInputEditText textInputEditText) {
         Calendar myCalendar = Calendar.getInstance(); //This calendar class allow us to create the calendar objects
         int year = myCalendar.get(Calendar.YEAR);
         int month = myCalendar.get(Calendar.MONTH);
@@ -213,11 +222,12 @@ public class AttendanceRecordActivity extends AppCompatActivity {
                                           int monthOfYear, int dayOfMonth) {
                         // set day of month , month and year value in the edit text
                         textInputEditText.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
-                        startDate = Objects.requireNonNull(textInputEditText.getText()).toString();
                     }
                 }, year, month, day);
         datePickerDialog.getDatePicker().setMaxDate(new Date().getTime());
         datePickerDialog.show();
+
+        return String.valueOf(textInputEditText.getText());
     }
 
     public void getRegisteredFPRecord() {
@@ -253,7 +263,7 @@ public class AttendanceRecordActivity extends AppCompatActivity {
                         String exitStatus = object.getString("exitstatus");
                         String checkOutTime = object.getString("checkouttime");
                         String fpId = object.getString("fpid");
-                        Log.e("Details", userName + " " + checkInStatus + " .."+currentDate
+                        Log.e("Details", userName + " " + checkInStatus + " .." + currentDate
                                 + "-- " + checkInTime + fpId);
                         attendanceModel.add(new AttendanceModel(0, userName, fpId, currentDate, checkInTime,
                                 checkInStatus, checkOutTime, exitStatus));

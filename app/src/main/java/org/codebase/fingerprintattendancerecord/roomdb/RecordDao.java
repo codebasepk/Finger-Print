@@ -33,8 +33,8 @@ public interface RecordDao {
     @Query("Select * from attendance_table where fp_id=:fpId order by id DESC")
     LiveData<List<AttendanceModel>> getUserDetail(String fpId);
 
-    @Query("Select * from attendance_table where `current_date` BETWEEN :startDate AND :endDate")
-    LiveData<List<AttendanceModel>> sortDetailsByDate(String startDate, String endDate);
+    @Query("Select * from attendance_table where (fp_id And `current_date`) BETWEEN :startDate And :endDate And :fp_id")
+    LiveData<List<AttendanceModel>> sortDetailsByDate(String startDate, String endDate, String fp_id);
 
     @Query("Select * from attendance_table where `current_date` =:todayDate")
     LiveData<List<AttendanceModel>> toDayAttendance(String todayDate);

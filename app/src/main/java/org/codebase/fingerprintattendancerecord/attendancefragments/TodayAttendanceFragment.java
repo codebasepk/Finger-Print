@@ -66,7 +66,7 @@ public class TodayAttendanceFragment extends Fragment {
         Date todayDate = Calendar.getInstance().getTime();
         Calendar cal = Calendar.getInstance();
         cal.setTime(todayDate);
-        cal.add(Calendar.DAY_OF_MONTH, -2);
+        cal.add(Calendar.DAY_OF_MONTH, 0);
         Date date = cal.getTime();
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

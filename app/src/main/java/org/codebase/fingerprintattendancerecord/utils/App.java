@@ -16,7 +16,7 @@ public class App extends Application {
 
     private static final String KEY_LOGGED_IN = "logged_in";
     public static final String CHANNEL_ID = "ALARM_SERVICE_CHANNEL";
-        public static final String SERVER = "http://192.168.1.25:8000/";
+    public static final String SERVER = "http://192.168.1.25:8000";
     protected static final String API = String.format("%s/api/", SERVER);
     public static final String GET_DATA_API = String.format("%sgetdata/", API);
     public static final String GET_REGISTERED_USERS_API = String.format("%sregistergetdata/", API);

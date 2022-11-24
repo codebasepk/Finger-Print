@@ -6,79 +6,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/nameSearchLayoutId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/nameSearchLayoutId"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="10dp">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_margin="10dp">-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/startDateTILId"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="2dp"
-                android:clickable="false"
-                app:startIconTint="@color/purple_700"
-                app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/startDateTILId"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_margin="2dp"-->
+<!--                android:clickable="false"-->
+<!--                app:startIconTint="@color/purple_700"-->
+<!--                app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/startDateETId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:inputType="date"
-                    android:hint="Start Date" />
-            </com.google.android.material.textfield.TextInputLayout>
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/startDateETId"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:clickable="false"-->
+<!--                    android:inputType="date"-->
+<!--                    android:hint="Start Date" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/endDateTILId"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="2dp"
-                android:clickable="false"
-                app:startIconTint="@color/purple_700"
-                app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/endDateTILId"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_margin="2dp"-->
+<!--                android:clickable="false"-->
+<!--                app:startIconTint="@color/purple_700"-->
+<!--                app:startIconDrawable="@drawable/ic_baseline_calendar_month_24">-->
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/endDateETId"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:clickable="false"
-                    android:hint="End Date" />
-            </com.google.android.material.textfield.TextInputLayout>
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/endDateETId"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:inputType="date"-->
+<!--                    android:clickable="false"-->
+<!--                    android:hint="End Date" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <Button
-                android:id="@+id/detailsByDateButtonId"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="Get Details"
-                android:textAllCaps="false"
-                android:enabled="false"
-                android:clickable="false"
-                android:shadowRadius="20"/>
+<!--            <Button-->
+<!--                android:id="@+id/detailsByDateButtonId"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:text="Get Details"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:shadowRadius="20"/>-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <!-- Linear layout of horizontal orientation -->
     <LinearLayout
@@ -86,7 +84,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/nameSearchLayoutId"
         android:layout_marginTop="20dp"
         android:background="#D6EEEE">
 

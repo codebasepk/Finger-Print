@@ -19,6 +19,7 @@ import org.codebase.fingerprintattendancerecord.R;
 import org.codebase.fingerprintattendancerecord.models.RegisteredFPModel;
 import org.codebase.fingerprintattendancerecord.showattendance.AttendanceRecordActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,9 +45,11 @@ public class RegisteredFpAdapter extends RecyclerView.Adapter<RegisteredFpAdapte
         RegisteredFPModel fpModel = list.get(position);
 
         Log.e("id ", fpModel.getFpId());
-        holder.registeredUserName.setText(fpModel.getName());
-        holder.registeredFpId.setText(fpModel.getFpId());
-        holder.registeredDate.setText(fpModel.getRegisterDate());
+        holder.registeredUserName.setText("Name: "+fpModel.getName());
+        holder.registeredFpId.setText("FPID: "+fpModel.getFpId());
+
+        holder.registeredDate.setText("Date: "+fpModel.getRegisterDate());
+
 
         holder.cardView.setOnClickListener(view -> {
             Intent intent = new Intent(context, AttendanceRecordActivity.class);

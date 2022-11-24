@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         request.setOnResponseListener(response -> {
             if (response.code == HttpResponse.HTTP_OK) {
-                Log.e("get response ", String.valueOf(response.code));
+                Log.e("get response09 ", String.valueOf(response.code));
                 JSONObject jsonObject = response.toJSONObject();
                 RecordDatabase.getInstance(getApplicationContext()).fpDao().deleteAttTable();
                 try {
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         request.setOnErrorListener(error -> {
-            Log.e("Error ", error.reason);
+            Log.e("Error ", error.reason +",.,.,."+ error.code);
         });
 
         request.get(App.GET_DATA_API);
